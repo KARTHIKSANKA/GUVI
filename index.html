@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/add.css">
+    <script type="text/javascript" src="JS/code.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="text-center">Sign In</h2>
+      <!--<form id="login">--><div id="message"></div>
+        <div class="form-group">
+          <label for="email">Email Id</label>
+          <input type="text" id="email" name="email" placeholder="Enter your Email Id"  required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password"  required>
+        </div>
+        <div class="text-center">
+          <!--<button type="submit" class="btn" onclick="submit()">Sign In</button>-->
+          <!--<input class="btn" type="submit" value="sign in" onclick="check()">-->
+		<button class="btn" id="signin-button">Login</button>
+		  
+         <p>Don't have an account?</p><a href="signup.html">Sign up</a>
+        </div>
+      <!--</form>-->
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="JS/fun.js"></script>
+  <!-- <script>
+      $(document).ready(function () {
+        $("#signin-button").click(function (e) {
+          e.preventDefault();
+          $("#message").empty(); // Clear any previous error messages
+
+          var email = $("#email").val();
+          var password = $("#password").val();
+
+          $.ajax({
+            type: "POST",
+            url: "login.php",
+            data: { email: email, password: password },
+            dataType: "json",
+            success: function (response) {
+              if (response.success) {
+                window.location.href = "dashboard.php"; // Redirect to a dashboard page on successful login
+              } else {
+                $("#message").html(response.message);
+              }
+            }
+          });
+        });
+      });
+    </script>-->
+  </body>
+</html>

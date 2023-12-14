@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/add.css">
+  <title>Sign up</title>
+</head>
+<body>
+  <div class="container">
+    <div class="card-body">
+      <div class="text-center">
+        <h1>Sign Up</h1>
+        <table>
+		<tr>
+          <td><label>User Name:</label></td>
+          <td><input type="text" id="username" name="username" placeholder="Enter User Name" required ></td>
+        </tr>
+         <tr> 
+          <td><label>DOB:</label></td>
+          <td><input type="date" id="dob" name="dob" required><td>
+          </tr>
+            <tr>
+          <td><label>Age:</label></td>
+          <td><input type="number" id="age" name="age" required></td>
+        </tr>
+          <tr><td><label>Contact:</label></td>
+          <td><input type="" id="contact" name="contact" placeholder="Enter your Ph num" required></td>
+        </tr>
+        <tr>
+          <td><label for="email">Email Id:</label></td>
+          <td><input type="email" id="email" name="email" placeholder="Enter Email id" required></td>
+          </tr>
+          <tr>
+         <td> <label>Password:</label></td>
+          <td><input type="password" id="password" name="password" placeholder="Enter Password" required></td>
+        </tr>
+        <tr>
+          <td><label>Confirm Password:</label></td>
+          <td><input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required></td>
+        </tr>
+        <tr>
+		</table>
+         <input class="btn" type="button" value="register" onclick="regis()">
+		 <a href="index.html"><input type="button" value="Back" ></a>
+		  
+        
+      </div>
+    </div>
+  </div>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+
+  <script src="JS/fun.js"></script>
+  <script>
+   function regggis() {
+    var pass = document.getElementById("password").value;
+    var cpass = document.getElementById("confirm_password").value;
+    if (cpass === pass) {
+      var nam = document.getElementById("username").value;
+      var dob = document.getElementById("dob").value;
+      var age = document.getElementById("age").value;
+      var cont = document.getElementById("contact").value;
+      var email = document.getElementById("email").value;
+      var pass = document.getElementById("password").value;
+      var a; // Create the XMLHttpRequest object
+      if (window.XMLHttpRequest) {
+        a = new XMLHttpRequest();
+      } else {
+        a = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      a.onreadystatechange = function () {
+        if (a.readyState === 4) {
+          if (a.status === 200) {
+            alert(a.responseText);
+            // You can perform additional actions here after a successful registration
+         
+		  } else {
+            alert("Error: Registration failed");
+          }
+        }
+      };
+      var url = "PHP/get.php"; // Update this URL to the correct endpoint
+      var val = "username=" + nam + "&dob=" + dob + "&age=" + age + "&contact=" + cont + "&email=" + email + "&password=" + pass;
+      a.open("POST", url, true);
+      a.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      a.send(val);
+    } else {
+      alert('Password mismatch');
+    }
+  }
+  </script>
+</body>
+</html>
